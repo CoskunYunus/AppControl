@@ -1,0 +1,18 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>please enter your email</p>
+    <form method="post" action="/Account/index">
+        <div class="row">
+            <div class="col-md-10">
+                <input type="text" name="Email" class="form-control" placeholder="Email"/>
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-info" style="width: 100%"> ENTER </button>
+            </div>
+        </div>
+    </form>
+</div>

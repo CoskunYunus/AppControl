@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\core\Nuevo.Core.Infrastructure\Nuevo.Core.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\Middlewares\AppHealthManager\Nuevo.Middlewares.AppHealthManager.EfBusiness\Nuevo.Middlewares.AppHealthManager.EfBusiness.csproj" />
+    <ProjectReference Include="..\..\Middlewares\AppHealthManager\Nuevo.Middlewares.AppHealthManager.Logic\Nuevo.Middlewares.AppHealthManager.Logic.csproj" />
+    <ProjectReference Include="..\..\Middlewares\AppHealthManager\Nuevo.Middlewares.AppHealthManager.Models\Nuevo.Middlewares.AppHealthManager.Models.csproj" />
+    <ProjectReference Include="..\..\Middlewares\AppHealthManager\Nuevo.Middlewares.AppHealthManager.Provider\Nuevo.Middlewares.AppHealthManager.Provider.csproj" />
+  </ItemGroup>
+
+
+
+</Project>

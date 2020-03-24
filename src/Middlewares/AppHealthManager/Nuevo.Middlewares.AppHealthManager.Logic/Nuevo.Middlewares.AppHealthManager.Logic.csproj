@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\core\Nuevo.Core.EfInfrastructure\Nuevo.Core.EfInfrastructure.csproj" />
+    <ProjectReference Include="..\..\..\core\Nuevo.Core.Infrastructure\Nuevo.Core.Infrastructure.csproj" />
+    <ProjectReference Include="..\Nuevo.Middlewares.AppHealthManager.EfBusiness\Nuevo.Middlewares.AppHealthManager.EfBusiness.csproj" />
+    <ProjectReference Include="..\Nuevo.Middlewares.AppHealthManager.Models\Nuevo.Middlewares.AppHealthManager.Models.csproj" />
+    <ProjectReference Include="..\Nuevo.Middlewares.AppHealthManager.Provider\Nuevo.Middlewares.AppHealthManager.Provider.csproj" />
+  </ItemGroup>
+
+</Project>

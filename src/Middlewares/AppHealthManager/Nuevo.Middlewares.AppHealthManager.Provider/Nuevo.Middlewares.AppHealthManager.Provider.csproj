@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\core\Nuevo.Core.Infrastructure\Nuevo.Core.Infrastructure.csproj" />
+    <ProjectReference Include="..\Nuevo.Middlewares.AppHealthManager.Models\Nuevo.Middlewares.AppHealthManager.Models.csproj" />
+  </ItemGroup>
+
+</Project>
