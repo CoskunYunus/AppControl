@@ -9,6 +9,7 @@ namespace Nuevo.Middlewares.AppHealthManager.Provider.LogicContracts
     public interface IAppHealthLogic
     {
          Result ApplicationAdd(AppResponsetModel  model);
+         Result ApplicationDelete(int key);
          Result ApplicationUpdate(AppResponsetModel model);
          Result<List<AppResponsetModel>> GetApplication(int accountKey);
 

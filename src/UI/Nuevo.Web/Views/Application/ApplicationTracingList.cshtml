@@ -1,0 +1,49 @@
+﻿@model Nuevo.Core.Infrastructure.Result<List<Nuevo.Middlewares.AppHealthControl.Models.RequestModel.TracingRequestModel>>
+@{
+    Layout = null;
+
+    ViewData["Title"] = "ApplicationTracingList";
+}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Tracking Date</th>
+            <th scope="col">Status</th>
+            <th scope="col">Message</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Data != null)
+        {
+            foreach (var data in Model.Data)
+            {
+
+                <tr>
+                    <th scope="row">@(Model.Data.IndexOf(data))</th>
+                    <td>@data.CreateDate</td>
+                    <td>@data.Status</td>
+                    <td>@data.Message</td>
+                </tr>
+            }
+            if (Model.Data.Count == 0)
+            {
+                {
+                    <h2 style="text-align: center">
+                        No tracking Records Found
+                    </h2>
+                }
+            }
+
+        }
+        else
+        {
+            <h2 style="text-align: center">
+                No tracking Records Found
+            </h2>
+        }
+
+    </tbody>
+</table>
+

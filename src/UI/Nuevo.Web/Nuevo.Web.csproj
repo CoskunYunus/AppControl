@@ -6,11 +6,23 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
+    <PackageReference Include="Quartz" Version="3.0.7" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\core\Nuevo.Core.Infrastructure\Nuevo.Core.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\Middlewares\AppHealthControl\Nuevo.Middlewares.AppHealthControl.Logic\Nuevo.Middlewares.AppHealthControl.Logic.csproj" />
+    <ProjectReference Include="..\..\Middlewares\AppHealthControl\Nuevo.Middlewares.AppHealthControl.Models\Nuevo.Middlewares.AppHealthControl.Models.csproj" />
+    <ProjectReference Include="..\..\Middlewares\AppHealthControl\Nuevo.Middlewares.AppHealthControl.Provider\Nuevo.Middlewares.AppHealthControl.Provider.csproj" />
     <ProjectReference Include="..\..\Middlewares\AppHealthManager\Nuevo.Middlewares.AppHealthManager.EfBusiness\Nuevo.Middlewares.AppHealthManager.EfBusiness.csproj" />
     <ProjectReference Include="..\..\Middlewares\AppHealthManager\Nuevo.Middlewares.AppHealthManager.Logic\Nuevo.Middlewares.AppHealthManager.Logic.csproj" />
     <ProjectReference Include="..\..\Middlewares\AppHealthManager\Nuevo.Middlewares.AppHealthManager.Models\Nuevo.Middlewares.AppHealthManager.Models.csproj" />

@@ -4,4 +4,9 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\core\Nuevo.Core.Infrastructure\Nuevo.Core.Infrastructure.csproj" />
+    <ProjectReference Include="..\Nuevo.Middlewares.AppHealthControl.Models\Nuevo.Middlewares.AppHealthControl.Models.csproj" />
+  </ItemGroup>
+
 </Project>

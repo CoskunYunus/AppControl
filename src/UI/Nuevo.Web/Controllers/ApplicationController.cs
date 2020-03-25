@@ -3,24 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Nuevo.Middlewares.AppHealthControl.Models.ResponseModel;
+using Nuevo.Middlewares.AppHealthControl.Provider.LogicContracts;
 using Nuevo.Middlewares.AppHealthManager.Models;
 using Nuevo.Middlewares.AppHealthManager.Provider.LogicContracts;
 using Nuevo.Web.Extensions;
+using Nuevo.Web.QuartzManager;
 
 namespace Nuevo.Web.Controllers
 {
     public class ApplicationController : Controller
     {
         private readonly IAppHealthLogic _appHealthLogic;
+        private readonly IAppHealtControlLogic _abAppHealtControlLogic;
 
-        public ApplicationController(IAppHealthLogic appHealthLogic)
+        public ApplicationController(IAppHealthLogic appHealthLogic, IAppHealtControlLogic abAppHealtControlLogic)
         {
-            this._appHealthLogic = appHealthLogic;
+            _appHealthLogic = appHealthLogic;
+            _abAppHealtControlLogic = abAppHealtControlLogic;
         }
 
 
         public IActionResult Index()
         {
+            ViewBag.userName = HttpContext.Session.GetAuth().Email;
             var accountKey = HttpContext.Session.GetAuth().Key;
             var model = _appHealthLogic.GetApplication(accountKey);
             return View(model);
@@ -28,46 +34,25 @@ namespace Nuevo.Web.Controllers
 
         public IActionResult ApplicationTracingList(int appKey)
         {
-            return View();
-        }
-        public IActionResult ApplicationTracingSet(int appKey)
-        {
-            return View();
-        }
-        public IActionResult ApplicationTracingRemove(int appKey)
-        {
-            return View();
+            var model = _abAppHealtControlLogic.TracingHistory(appKey);
+            return View(model);
         }
 
 
+        public void Add(AppResponsetModel model)
+        {
+            model.AccountId = HttpContext.Session.GetAuth().Key;
 
-        public IActionResult Add()
-        {
-            return View();
-        }
-        [HttpPost]
-        public IActionResult Add(AppResponsetModel model)
-        {
-            var result = _appHealthLogic.ApplicationAdd(model);
-            if (result.Status == Core.Infrastructure.ResultType.Success)
-                return RedirectToAction("Index");
-            return View(result);
+            if (model.Id > 0)
+                _appHealthLogic.ApplicationUpdate(model);
+            else
+                _appHealthLogic.ApplicationAdd(model);
         }
 
-        public IActionResult Update()
+        public void Delete(int id)
         {
-            return View();
+            var result = _appHealthLogic.ApplicationDelete(id);
         }
-        [HttpPost]
-        public IActionResult Update(AppResponsetModel model)
-        {
-            var result = _appHealthLogic.ApplicationUpdate(model);
-            if (result.Status == Core.Infrastructure.ResultType.Success)
-                return RedirectToAction("Index");
-            return View(result);
-        }
-
-
 
     }
 }

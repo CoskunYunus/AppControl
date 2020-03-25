@@ -8,11 +8,14 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Nuevo.Middlewares.AppHealthControl.Logic;
+using Nuevo.Middlewares.AppHealthControl.Provider.LogicContracts;
 using Nuevo.Middlewares.AppHealthManager.EfBusiness;
 using Nuevo.Middlewares.AppHealthManager.Logic;
 using Nuevo.Middlewares.AppHealthManager.Models.Entity;
 using Nuevo.Middlewares.AppHealthManager.Provider.DbContracts;
 using Nuevo.Middlewares.AppHealthManager.Provider.LogicContracts;
+using Nuevo.Web.QuartzManager;
 
 namespace Nuevo.Web
 {
@@ -39,9 +42,11 @@ namespace Nuevo.Web
             });
 
 
+        
 
 
             services.AddScoped<IAppHealthLogic, AppHealthLogic>();
+            services.AddScoped<IAppHealtControlLogic, AppHealtControlLogic>();
 
 
             services.AddControllersWithViews();
@@ -73,6 +78,8 @@ namespace Nuevo.Web
                     name: "default",
                     pattern: "{controller=Account}/{action=Index}/{id?}");
             });
+
+            new InitializeJobs(new AppHealthLogic()).Start();
         }
     }
 }

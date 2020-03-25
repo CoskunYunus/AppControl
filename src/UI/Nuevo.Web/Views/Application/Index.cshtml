@@ -1,0 +1,229 @@
+﻿@model Nuevo.Core.Infrastructure.Result<List<Nuevo.Middlewares.AppHealthManager.Models.AppResponsetModel>>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$('[data-toggle="tooltip"]').tooltip();
+	var actions = $("table td:last-child").html();
+	// Append table with add row form on add new button click
+    $(".add-new").click(function(){
+		$(this).attr("disabled", "disabled");
+		var index = $("table tbody tr:last-child").index();
+        var row = '<tr>' +
+            '<td>#</td>' +
+            '<td><input type="text" class="form-control" name="name" id="name"></td>' +
+            '<td><input type="text" class="form-control" name="url" id="url"></td>' +
+            '<td><input type="text" class="form-control" name="url" id="/*tracking*/"></td>' +
+			'<td>' + actions + '</td>' +
+        '</tr>';
+    	$("table").append(row);
+		$("table tbody tr").eq(index + 1).find(".add, .edit").toggle();
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+	// Add row on add button click
+	$(document).on("click", ".add", function(){
+		var empty = false;
+        var input = $(this).parents("tr").find('input[type="text"]');
+        console.log(input);
+        input.each(function(){
+			if(!$(this).val()){
+				$(this).addClass("error");
+				empty = true;
+			} else{
+                $(this).removeClass("error");
+            }
+		});
+		$(this).parents("tr").find(".error").first().focus();
+        if (!empty) {
+            var _name = "";
+            var _url = "";
+            var _index = 0;
+            var _key = "";
+            var _tracking = "";
+            $(this).parents("tr").find("th").each(function () {
+                _key = $(this).text();
+            });
+
+
+            input.each(function () {
+                _index++;
+                console.log($(this).val());
+                $(this).parent("td").html($(this).val());
+
+                switch (_index) {
+                case 1:
+                    _name = $(this).val();
+                        break;
+                    case  2:
+                        _url = $(this).val();
+                        break;
+                case 3:
+                        _tracking = $(this).val();
+                        break;
+                default:
+                }
+			});
+			$(this).parents("tr").find(".add, .edit").toggle();
+            $(".add-new").removeAttr("disabled");
+
+
+            $.ajax({
+                url: '@Url.Action("Add","Application")',
+                type: 'POST',
+                dataType: 'json',
+                data: { Name: _name, Url: _url,Id:_key,Tracking:_tracking },
+                success: function (sc) {
+
+                },
+                error: function (err) {
+
+                }
+            });
+        }
+
+    });
+	// Edit row on edit button click
+
+	$(document).on("click", ".edit", function(){
+
+        var _key = "";
+        var _name = "";
+        var _url = "";
+        var _index = 0;
+
+          $(this).parents("tr").find("th").each(function () {
+              _key = $(this).text();
+          });
+
+        console.log(_key);
+        $(this).parents("tr").find("td:not(:last-child)").each(function () {
+            $(this).html('<input type="text" class="form-control" value="' + $(this).text() + '">');
+            _index++;
+            switch (_index) {
+            case 1:
+                _name = $(this).val();
+                break;
+            case  2:
+                _url = $(this).val();
+                break;
+            default:
+            }
+        });
+		$(this).parents("tr").find(".add, .edit").toggle();
+		$(".add-new").attr("disabled", "disabled");
+    });
+
+	// Delete row on delete button click
+
+    $(document).on("click", ".delete", function () {
+        var input = $(this).parents("tr");
+        var _deleteKey = (input.find('th[scope="row"]')[0]).innerHTML;
+        console.log(input);
+        console.log(_deleteKey);
+
+        $.ajax({
+            url: '@Url.Action("Delete","Application")',
+            type: 'POST',
+            dataType: 'json',
+            data: { id:_deleteKey },
+            success: function (sc) {
+
+            },
+            error: function (err) {
+
+            }
+        });
+
+
+        $(this).parents("tr").remove();
+        $(".add-new").removeAttr("disabled");
+    });
+});
+
+
+    function detailApp(id) {
+
+        
+        $.ajax({
+            url: '@Url.Action("ApplicationTracingList","Application")',
+            type: 'POST',
+            dataType: 'html',
+            data: { appKey:id},
+            success: function (result) {
+                $("#appHistoryBody").html(result);
+            },
+            error: function (err) {
+
+            }
+        });
+
+}
+</script>
+
+<div class="container">
+    <div class="table-wrapper">
+        <div class="table-title">
+            <div class="row">
+                <div class="col-sm-8"><h2> Application List</h2></div>
+                <div class="col-sm-4">
+                    <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add New</button>
+                </div>
+            </div>
+        </div>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th style="width: 83px;">#</th>
+                <th>Name</th>
+                <th>Application URL</th>
+                <th>Tracking</th>
+                <th style="width: 133px;">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var data in Model.Data)
+            {
+                <tr>
+                    <th scope="row" style="width: 75px">@data.Id</th>
+                    <td>@data.Name</td>
+                    <td>@data.Url</td>
+                    <td>@data.Tracking</td>
+                    <td>
+                        <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
+                        <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                        <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                        <a class="detail" title="Detail" onclick="detailApp('@data.Id')" data-toggle="modal" data-target="#exampleModal"><i class="material-icons">&#xE03B;</i></a>
+                    </td>
+                </tr>
+            }
+
+            </tbody>
+        </table>
+    </div>
+    <h5>Tracing Time Settings => <a href="https://www.freeformatter.com/cron-expression-generator-quartz.html">https://www.freeformatter.com/cron-expression-generator-quartz.html</a></h5>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Aplication Tracking History</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="appHistoryBody">
+                <h2 style="text-align: center; margin:25px ">
+                    LOADİNG...
+                </h2>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

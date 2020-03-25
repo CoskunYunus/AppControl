@@ -26,10 +26,16 @@ namespace Nuevo.Web.Controllers
             if (model == null || model.Email.Length < 5) return View();
 
             var user = _appHealthLogic.GetAccount(model.Email);
-            if (user == null) return View();
+            if (user.Status == Core.Infrastructure.ResultType.Error) return View();
             HttpContext.Session.SetAuth(new Auth.AuthModel {Email = user.Data.Email, Key = user.Data.Id});
             return Redirect("/Application");
         }
 
+
+        public IActionResult LogOut()
+        {
+            HttpContext.Session.Clear();
+            return Redirect("/");
+        }
     }
 }

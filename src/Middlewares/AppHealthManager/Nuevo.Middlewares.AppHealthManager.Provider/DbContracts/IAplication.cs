@@ -11,5 +11,7 @@ namespace Nuevo.Middlewares.AppHealthManager.Provider.DbContracts
         void Update(Application application);
         void Delete(Application application);
         List<Application> List();
+        List<Application> List(int accountId);
+        Application GetByKey(object key);
     }
 }

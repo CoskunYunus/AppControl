@@ -5,9 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.2" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\..\core\Nuevo.Core.EfInfrastructure\Nuevo.Core.EfInfrastructure.csproj" />
-    <ProjectReference Include="..\..\..\core\Nuevo.Core.Infrastructure\Nuevo.Core.Infrastructure.csproj" />
-    <ProjectReference Include="..\Nuevo.Middlewares.AppHealthControl.EfBussines\Nuevo.Middlewares.AppHealthControl.EfBussines.csproj" />
     <ProjectReference Include="..\Nuevo.Middlewares.AppHealthControl.Models\Nuevo.Middlewares.AppHealthControl.Models.csproj" />
     <ProjectReference Include="..\Nuevo.Middlewares.AppHealthControl.Provider\Nuevo.Middlewares.AppHealthControl.Provider.csproj" />
   </ItemGroup>

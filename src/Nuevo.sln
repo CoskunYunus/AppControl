@@ -35,11 +35,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nuevo.Middlewares.AppHealth
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nuevo.Core.EfInfrastructure", "core\Nuevo.Core.EfInfrastructure\Nuevo.Core.EfInfrastructure.csproj", "{239EB220-F5FA-4D52-9381-D0EA626EFAC7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuevo.Middlewares.AppHealthControl.Provider", "Middlewares\AppHealthControl\Nuevo.Middlewares.AppHealthControl.Provider\Nuevo.Middlewares.AppHealthControl.Provider.csproj", "{BA88783B-BB6E-4054-99D5-0DAF0D6A2962}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nuevo.Middlewares.AppHealthControl.Provider", "Middlewares\AppHealthControl\Nuevo.Middlewares.AppHealthControl.Provider\Nuevo.Middlewares.AppHealthControl.Provider.csproj", "{BA88783B-BB6E-4054-99D5-0DAF0D6A2962}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuevo.Middlewares.AppHealthControl.Logic", "Middlewares\AppHealthControl\Nuevo.Middlewares.AppHealthControl.Logic\Nuevo.Middlewares.AppHealthControl.Logic.csproj", "{2BAC0260-F438-4E50-9C94-CF3E78407AB3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nuevo.Middlewares.AppHealthControl.Logic", "Middlewares\AppHealthControl\Nuevo.Middlewares.AppHealthControl.Logic\Nuevo.Middlewares.AppHealthControl.Logic.csproj", "{2BAC0260-F438-4E50-9C94-CF3E78407AB3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuevo.Middlewares.AppHealthControl.Models", "Middlewares\AppHealthControl\Nuevo.Middlewares.AppHealthControl.Models\Nuevo.Middlewares.AppHealthControl.Models.csproj", "{8982874F-6DA2-45E7-A840-4712CF45311F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nuevo.Middlewares.AppHealthControl.Models", "Middlewares\AppHealthControl\Nuevo.Middlewares.AppHealthControl.Models\Nuevo.Middlewares.AppHealthControl.Models.csproj", "{8982874F-6DA2-45E7-A840-4712CF45311F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuevo.Middlewares.AppHealthControl.EfBussines", "Middlewares\AppHealthControl\Nuevo.Middlewares.AppHealthControl.EfBussines\Nuevo.Middlewares.AppHealthControl.EfBussines.csproj", "{90A8EBC8-87EC-4140-8270-2DAD07DA296B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -99,6 +101,10 @@ Global
 		{8982874F-6DA2-45E7-A840-4712CF45311F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8982874F-6DA2-45E7-A840-4712CF45311F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8982874F-6DA2-45E7-A840-4712CF45311F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90A8EBC8-87EC-4140-8270-2DAD07DA296B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90A8EBC8-87EC-4140-8270-2DAD07DA296B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90A8EBC8-87EC-4140-8270-2DAD07DA296B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90A8EBC8-87EC-4140-8270-2DAD07DA296B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -119,6 +125,7 @@ Global
 		{BA88783B-BB6E-4054-99D5-0DAF0D6A2962} = {0AFD8644-B1D1-4445-A391-189AE63C8846}
 		{2BAC0260-F438-4E50-9C94-CF3E78407AB3} = {0AFD8644-B1D1-4445-A391-189AE63C8846}
 		{8982874F-6DA2-45E7-A840-4712CF45311F} = {0AFD8644-B1D1-4445-A391-189AE63C8846}
+		{90A8EBC8-87EC-4140-8270-2DAD07DA296B} = {0AFD8644-B1D1-4445-A391-189AE63C8846}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B60B559C-C5C2-42E7-939B-8B434F79B428}

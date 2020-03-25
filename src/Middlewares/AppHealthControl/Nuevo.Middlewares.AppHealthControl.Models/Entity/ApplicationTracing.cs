@@ -4,16 +4,12 @@ using System.Text;
 
 namespace Nuevo.Middlewares.AppHealthManager.Models.Entity
 {
-  public  class Application
+   public class ApplicationTracing
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Url { get; set; }
+        public int ApplicationId { get; set; }
+        public DateTime CreateDate { get; set; }
         public bool Status { get; set; }
-
-        public int UserId { get; set; }
-        public string Tracking { get; set; }
-
-
+        public string Message { get; set; }
     }
 }
